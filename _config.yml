@@ -104,4 +104,3 @@ deploy:
   type: git
   repository: https://github.com/Darrin-Lin/darrin-lin.github.io.git
   branch: main
-  message: Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}

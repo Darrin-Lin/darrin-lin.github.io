@@ -113,6 +113,6 @@ menu:
   Tags: /tags
   Categories: /categories
 
-# Logo (Font Awesome Class)
-fa_logo: fa-cube
-
+# Social Accounts
+github_url: https://github.com/darrin-lin
+email_url: me@darrin.cc

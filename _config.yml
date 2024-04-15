@@ -96,7 +96,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: alpha-dust
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -104,3 +104,13 @@ deploy:
   type: git
   repository: https://github.com/Darrin-Lin/darrin-lin.github.io.git
   branch: main
+
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  About: /about.html  
+
+# Logo (Font Awesome Class)
+fa_logo: fa-cube
+

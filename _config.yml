@@ -109,7 +109,9 @@ deploy:
 menu:
   Home: /
   Archives: /archives
-  About: /about.html  
+  About: /about
+  Tags: /tags
+  Categories: /categories
 
 # Logo (Font Awesome Class)
 fa_logo: fa-cube

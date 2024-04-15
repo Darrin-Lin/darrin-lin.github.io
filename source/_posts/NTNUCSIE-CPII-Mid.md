@@ -1,13 +1,8 @@
 ---
-title: 程式設計二 期中考解題心得
+title: 師大資工程式設計二 期中考解題心得
 date: 2024-04-15
 tags: [NTNUCSIE, Computer Programming II, Mid]
 ---
-
-師大資工程式設計二 期中考解題心得
-===
-
-[TOC]
 
 ## 前言
 

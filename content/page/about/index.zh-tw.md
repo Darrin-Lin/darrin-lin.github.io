@@ -7,4 +7,7 @@ menu:
             icon: user
 ---
 
-This is a test page for i18n support.
+## 經歷
+
+- TCFSH CIRC 39th's instructor
+- NTNU CSIE 116 student

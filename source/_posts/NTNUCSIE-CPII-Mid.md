@@ -1,7 +1,8 @@
 ---
 title: 師大資工程式設計二 期中考解題心得
-date: 2024-04-15
+date: 2024-04-15 23:00:00
 tags: [NTNUCSIE, Computer Programming II, Mid]
+categories: [NTNUCSIE, Computer Programming II]
 ---
 
 ## 前言

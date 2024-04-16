@@ -7,7 +7,7 @@ tags: [NTNUCSIE, Computer Programming II, Mid]
 ## 前言
 
 [題目](https://drive.google.com/file/d/1HhX97mzHtCqlJ0qMEVxLFfzy-yT4CT5M/view)
-
+<!-- more -->
 這次整體難度比上學期期中考跟期末考難度低，加上老師跟助教有提示要先去寫處理 BMP file 的 function，所以寫得很順。
 
 ## 第一題 Matrix Multiplication

@@ -17,9 +17,13 @@ math: true
 
 第一題是要處理矩陣運算，但不會給你矩陣的大小，所以要先把整個矩陣用 `fgets` 讀進來再處理，雖然我這題早就有寫好的 vector header 可以用來存矩陣，但因為處理輸入太花時間，所以跳過。
 
+得分：**0 / 25**
+
 ## 第二題 Text Compression
 
 第二題是要處理字串壓縮，這題我把字元對應的二進製讀進來，並用 `strtol` 來轉成十進位再丟到開好大小為 $29$ 的 array 裡，然後同時儲存長度來處理開頭是 $0$ 的情況。接下來就是開一個 byte 暫存然後計算暫存長度跟對應到字元的長度是否 $\geq 8$ ，如果是就把暫存的 byte 寫入檔案，然後把暫存的 byte 清空，直到該字元加字串的長度$\lt 8$，中間合併字串就只是單純的位元運算，然後等把字串全部寫完後，再把處理最後的 padding。
+
+得分：**25 / 25**
 
 ```c
 #include <stdio.h>
@@ -203,6 +207,10 @@ terminate:
 這題因為我之前沒準備到縮放的 function，所以是寫完第二題才回來寫，這題因為我之前準備的 header file 裡的 function 是寫讀指定位置那個 pixel 的值，用 `fseek` 跳來跳去，所以很方便，然後在考試時就趕工寫縮放的 function，因為說是線性縮放，我不確定助教意思是什麼，所以我就直接算比例然後把對應的位置強制轉型成 `int32_t` 然後去讀取。
 當我把 header file 的 function 寫完後，這題就只要 `for` 迴圈跑過整個圖片，把 y 值上下反轉然後再對應的範圍內寫入新的圖片就好。
 
+得分：**5 / 25**
+
+我居然忘記把高度再往下偏移，也就是抓到的點是左下不是左上，最後只拿到錯誤處理的 5 分。
+
 ```c
 #include <stdio.h>
 #include <stdint.h>
@@ -261,6 +269,9 @@ int main()
     new = fopen("tmp.bmp", "rb");
     sBmpHeader new_header = read_header(new);
     fwrite(&cover_header, sizeof(sBmpHeader), 1, output);
+    // forgot in mid
+    y+=new_header.height;
+    // forgot in mid
     // y = cover_header.width - y;
     for (int32_t i = 0; i < abs(cover_header.height); i++)
     {
@@ -291,6 +302,9 @@ int main()
 ## 第四題 Colorful Fantastic Render System []
 
 這題是最簡單的，只要先設一個 $256 \times 256$ 的 array 來存顏色，設定顏色跟方向循環用的 array，存現在位置，再把每一個指令射程 function 來處理就好，然後中括號的循環就是用遞迴來處理，就是從 '\[' 讀到 '\]' 然後跑兩次就好。
+
+得分：**23 / 25**
+我忘了把顏色填入陣列了，兩分顏色處理就沒了。
 
 ```c
 #include <stdio.h>
@@ -415,6 +429,15 @@ int main()
     fclose(file);
     file = fopen(file_name, "rb");
     sBmpHeader header = read_header(file);
+    // forget in midterm.
+    for(int32_t i =0;i<256;i++)
+    {
+        for(int32_t j = 0;j<256;j++)
+        {
+            picture[i][j]=read_pixel(file,header,i,j,0);
+        }
+    }
+    // forget in midterm
     file = fopen(file_name, "wb");
 
     {

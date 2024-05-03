@@ -33,7 +33,7 @@ services:
         shortname: 
     # GA Tracking ID
     googleAnalytics:
-        id:
+        id: G-X8J2G2PGMC
 
 permalinks:
     post: /p/:slug/

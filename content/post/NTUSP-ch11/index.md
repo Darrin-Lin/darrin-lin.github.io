@@ -101,7 +101,7 @@ create 完誰先跑跟 fork 一樣是看 CPU scheduling
 設定屬性在 create 時用\
 要先 allocate 一個 `pthread_attr_t` 的變數\
 規定 init 的 atrribute 一定要 destroy，因為可能會去額外 allocate resource\
-init 會把 `pthead_attr_t` 設定成 invaild 來避免誤用。\
+init 會把 `pthead_attr_t` 設定成 invaild 來避免誤用。
 
 - `detachstate` 比較常見，設定成 detatch 的話不用回收 terminated status
 - `guardize` 設定 thread stack 的 end 後的一塊 buffer 用來防止壓到其他 stack
@@ -119,7 +119,7 @@ init 會把 `pthead_attr_t` 設定成 invaild 來避免誤用。\
 有些 implementation 會用 light process implement 所以有時候會有 share problem\
 正常是使用時的時候會最好不要有 share resource 的問題，因為會共用\
 如果遇到傳入參數的要避免被 return 所以 invalid\
-不同 thread 最好也不要共用參數，因為不知道阿個先執行\
+不同 thread 最好也不要共用參數，因為不知道哪個先執行
 
 ### terminate
 #### whole process
@@ -161,7 +161,7 @@ return 也可以把 int 轉成 (void \*) 在接收時傳回去，在 open source
 要知道成功完成 cancel 可以用 join 來知道
 
 `int pthread_setcancelstate(int state, int *oldstate);`\
-可以設定自己要不要被 cancel\
+可以設定自己要不要被 cancel
 - `PTHREAD_CANCEL_ENABLE`(default)
 	- 不會馬上 terminated
 	- 執行到 cancelation point 才會 cancel
@@ -311,7 +311,7 @@ pthread_cond_signal(&v);
 
 opensource 通常會先 signal 再去 unlock，不過反過來在一些狀況也不會影響\
 這樣做是因為 wait 會先解除 sleep 然後再去 wait mutex lock，假設是 signal 完 context switch 就會變成 wait 的在那邊等 lock 然後送 signal 的 thread 再去 unlock mutex，這樣條件再沒有其他人先去請求 mutex 的時候就會就不會被改到\
-反過來先 unlock 再送 signal 的話在一些有 priorty 的 thrad pools 會出現問題\
+反過來先 unlock 再送 signal 的話在一些有 priorty 的 thrad pools 會出現問題
 ```
 priority A > B
 A 在等工作然後拿 mutex 之後執行 wait 把 mutex 放掉
@@ -329,7 +329,7 @@ B 這時候就會在 while 那邊因為條件達成。所以直接去執行變�
 除了 `shmget` 的另一個方法\
 把檔案 map 到記憶體\
 好處是不用像 buffer/unbuffer I/O 一樣搬來搬去\
-會把檔案 map 到 physical memory 然後再 link 到 VM stack 跟 heap 中間\
+會把檔案 map 到 physical memory 然後再 link 到 VM stack 跟 heap 中間
 
 `void *mmap(void *addr, size_t len, int prot, int flags, int fildes, off_t off);`
 
@@ -381,7 +381,7 @@ thread 的 context 是 signal handler 本身\
 特定用來處理 signal 的 thread\
 把其他 thread 對要處理的 signal block 起來，只讓要處理的 thread unblock
 ### inherit
-signal mask 會繼承 spawn 出自己的 thread 的 mask\
+signal mask 會繼承 spawn 出自己的 thread 的 mask
 ### mask
 `int pthread_sigmask(int how, const sigset_t *set, sigset_t *oldset);`\
 要去處理就會呼叫，參數跟 sigpromask 一樣

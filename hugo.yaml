@@ -1,7 +1,7 @@
 baseurl: https://darrin.cc
 languageCode: en-us
 theme: stack
-paginate: 3
+pagination.pagerSize: 3
 title: Darrin's Blog
 copyright: Darrin Lin
 

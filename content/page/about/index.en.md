@@ -19,4 +19,4 @@ menu:
 
 - TCFSH CIRC 39th's instructor
 - NTNU CSIE 116 student
-
+- NTNU CSIE Camp 2024 R&D team PM & instructor

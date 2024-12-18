@@ -140,7 +140,7 @@ CPU 時間就不會繼承，signal 的對象是 process，所以會是不會繼�
 同時跑不同部分的 process 如 networking 可以用到\
 spawn(exec + fork)
 
-## vfork
+## `vfork`
 在還沒有 copy on write 跟 VM 的時代 BSD 派的產物\
 讓 child 跟 parent 用同一個 page（也就是 VM 相同）\
 Vfork 完 child 要先執行，執行完 exit() 或 exex() 才能去跑 parent\
@@ -176,11 +176,11 @@ exit 跟 _exit 不會 return
 ### zombie process
 當 child process return 但是 parent 沒有用 wait 或者是離開，導致 child 的 PCB 沒有人拿，這時候就是 zombie process
 
-### atexit()
+### `atexit()`
 題外話：要引用別的檔案的變數要用 extern 引用，static 不能被用\
 註冊在 exit() 後會去執行的
 
-### wait waitpid
+### `wait` `waitpid`
 把結束的 child process 從 Z(Zombie process) 離開，child process 只要結束就會變成 Z\
 wait 是 block mode\
 waitpid 是可以設定成 non-blocking\
@@ -196,10 +196,10 @@ Return error
 - 變成 stop 之類的（如在背景跑，然後是 scanf）
 
 
-#### pid
+#### `pid`
 pid == -1: wait any child \
 pid > 1: wait for the child with pid
-#### op
+#### `op`
 op = WNOHANG\
 就是不去等待，可以搭配 SIGCHID 去檢查有沒有收到訊號，但會有 TOCTOU 不同可能會造成問題的問題
 
@@ -236,16 +236,16 @@ $ ./a.out &
 會顯示 pid 後在 backgroup 跑
 ```
 session & group 在 ch.9 有，但課上不到
-### wait3 wait4
+### `wait3` `wait4`
 可以拿到 PCB 的所有資訊\
-`wait3` 是可以拿到所有 PCB 資訊的 wait\
-`wait4` 是可以拿到所有 PCB 資訊的 waitpid
+wait3 是可以拿到所有 PCB 資訊的 wait\
+wait4 是可以拿到所有 PCB 資訊的 waitpid
 
 ## race condition
 多個 process 要去對同個資源做事，會出現照執行的順序對資源操作\
 基本上就是要根據 context switch 去思考是否有 race condition
 
-## exec
+## `exec`
 把程式寫入到 memory 的 text 區段，然後把 global variable 重新設定，並把 stack 跟 heap 清掉\
 不會動到 PCB
 ```
@@ -257,18 +257,18 @@ PATH 推薦把 `.` 放進去，然後要放到最後面，因為會照著順序�
 env 新增會在 heap 中去找一個區塊去放新的 table，然後更改 memory 記的 envp\
 但因為如果在 main funtion 丟進去的 envp 在 stack 中不會改，所以在 env 在執行時更改時會出問題\
 出錯才會 return
-### execl
+### `execl`
 用 pathname\
 把 arg 用 list 的方式傳，最後用 (char \*) 0 結尾
-### execv
+### `execv`
 把 arg 用 vector 的方式傳，最後用 argv[]
-### execle
+### `execle`
 有 envp 版本的 execl
-### execve
+### `execve`
 有 envp 版本的 execv
-### execlp 
+### `execlp`
 用 filename
-### execvp
+### `execvp`
 用 filename
 
 如果沒有設定 exec 要傳的 env 就會把自己的 env 傳過去
@@ -296,7 +296,6 @@ exec 唯一可能動的 kernel space
 ### Requirements & Changes
 Closing of open dir streams, effective user/group ID\
 可以在執行 exec 前做這些事
-<!-- 期末新增-->
 ## UID
 如 ch4 所說 save setuid 的功能
 | ID | exec & set-UID bit off | exec & set-UID bit on | setuid(uid) & superuser | setuid(uid) & N-user |
@@ -308,7 +307,7 @@ Closing of open dir streams, effective user/group ID\
 要拿 save set-UID 有一個方法是在 exec 完就去檢查 effective user ID
 
 ### utility of saved set-user ID
-#### example tip(BSD) or cu(SV)
+#### example `tip`(BSD) or `cu`(SV)
 tip 跟 UUCP 都會透過數據機，一個是去 access 遠端的系統，一個是 copy 遠端的檔案\
 因為 tip 要去搶 owner 是 `uucp` 的 lock，所以要去 setuid 在存取 lock 時更換 e-UID
 ```

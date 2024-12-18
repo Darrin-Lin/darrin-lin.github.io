@@ -112,7 +112,7 @@ variable names, procedures names, section names 跟 location 都在這邊紀錄\
 可以知道 symbol 在執行時 virtual memory 中的位置，以及在 ELF 的 address\
 也就是紀錄 .text section 中每個 symbol 的位置都會在這邊\
 在 compiler 中最麻煩的部份
-<!--以前老師是刻 PASCAL（教學式語言）清大刻 C compiler 不過就是有很多人拿 opensource 去改，PASCAL 就沒那麼好找-->
+
 #### .rel.text
 .text section 的 relocation info\
 有些東西 address 會是解不開（assebly 中會放 0 作為 address，以後 link 時再去解）\

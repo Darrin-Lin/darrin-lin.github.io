@@ -45,7 +45,6 @@ stream
 ### name stream pipe
 集合兩個特點
 
-<!--考試會有要寫程式，prototype 不考，也可以跟助教拿，但是在做什麼要知道-->
 
 ## FIFOs
 概念是有名字的 pipe，所以讀完就會清掉\

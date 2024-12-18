@@ -25,7 +25,6 @@ UNIX 下認 ID 不認 name\
 密碼是用時間產生 salt bit 加進去 `crypt()` 後再把 salt bit 加到最前面再存起來\
 避免可以透過改自己密碼來去對應\
 UNIX 密碼是 13 個字元，前兩個是 salt bit
-<!--工作站的電腦是 twitter 等級的，英業達送的，比計中強好幾倍 -->
 
 ## Process Management
 一個 program 可以跑一堆 process，process 有自己的 pid，可以用 `ps` `top` 看

@@ -62,7 +62,7 @@ stderr 不能是 fully buffered\
 如果 buf 不是 NULL 就至少要 `BUFSIZE` 的大小（stdio.h 定義），而種類看導向哪裡，如檔案就是 fully buffered\
 buf == NULL 就是 unbufferd
 
-### setvbuf(FILE \*fp, char\*buf, int mode, `size_t` size)
+### `setvbuf(FILE *fp, char *buf, int mode, size_t size)`
 可以設定 buffer type 跟 buffer size\
 假設是 `_IOFBF` 或 `_IOLBF` 且 buf 是 NULL，Disk 會幫忙開一個 block 的 buffer\
 在還沒 read write 前可以設定
@@ -71,9 +71,9 @@ buf == NULL 就是 unbufferd
 ### fseek
 binary file 不支援 seek `SEEK_END` 因為有些系統會因規定某些檔案的大小要多少的整數，剩下填 NULL，所以不一定能找到實際的結尾\
 text file 只能用到 `SEEK_SET`，只能移動到 ftell 回傳的那個值(???)
-### void rewind(FILE \*fp)
+### `void rewind(FILE *fp)`
 把 offset 移到最前面
-### long ftell(FILE \*fp)
+### `long ftell(FILE *fp)`
 回傳 offset，在 lseek 要用 lseek 把 offset 設成 0，`SEEK_CUR` 的回傳值來找\
 lseek 沒有同樣的功能，要用 lseek(fd, 0, SEEK_CUR) 的 return 來找
 
@@ -83,10 +83,10 @@ lseek 沒有同樣的功能，要用 lseek(fd, 0, SEEK_CUR) 的 return 來找
 ### Unformatted I/O
 沒有 type 的 I/O，可以一次讀一個 char, line, Direct I/O
 #### Direct I/O
-int getc(FILE \*fp) 可能會是一個 MACRO\
-int getchar(void) == getc(stdin)\
+`int getc(FILE *fp)` 可能會是一個 MACRO\
+`int getchar(void)` == `getc(stdin)`\
 char 有可能是 signed 或 unsigned，所以 getc 最好用 int 來接，**char 不管是 signed 或 unsigned 都會有可能造成問題**\
-int unget(int c,FILE \*fp)，可以把讀到的東西放回去，但不一定要放原本的字元，但不能是 -1(EOF)，可以用來檢查文字是否為中文（2~3 byte）
+`int unget(int c,FILE *fp)`，可以把讀到的東西放回去，但不一定要放原本的字元，但不能是 -1(EOF)，可以用來檢查文字是否為中文（2~3 byte）
 
 ### Memeory aligment
 會透過 address decoder 一排一排拿，所以 struct 考慮到 row 的大小（8 byte）會提升效率，所以有些系統會加一些 aligment，所以在 binary 的 I/O 有時候會造成問題

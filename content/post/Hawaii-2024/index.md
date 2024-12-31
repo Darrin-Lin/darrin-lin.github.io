@@ -10,8 +10,6 @@ math: true
 ## 8/12 KOA
 ![](img/IMG_4417.jpeg)
 ![](img/IMG_4418.jpeg)\
-![](img/IMG_4433.jpeg)
-![](img/IMG_4439.jpeg)
 
 ## 8/12 Mauna Kea
 ### Mauna Kea Visitor Information Station(Day)
@@ -19,9 +17,7 @@ math: true
 ![](img/IMG_4445.jpeg)
 
 ### Mauna Kea Observatories
-![](img/IMG_4454.jpeg)
 ![](img/IMG_4458.jpeg)\
-![](img/IMG_4460.jpeg)
 ![](img/IMG_4469.jpeg)\
 ![](img/IMG_4494.jpeg)\
 ![](img/IMG_4507.jpeg)\
@@ -53,10 +49,8 @@ math: true
 
 ### Hōlei Sea Arch
 ![](img/IMG_4798.jpeg)\
-![](img/IMG_4804.jpeg)\
 ![](img/IMG_4807.jpeg)\
 ![](img/IMG_4853.jpeg)\
-![](img/IMG_4908.jpeg)\
 ![](img/IMG_4966.jpeg)
 
 ## 8/14 ~ 20 Honolulu

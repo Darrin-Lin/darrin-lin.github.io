@@ -26,9 +26,6 @@ concurrency:
 defaults:
   run:
     shell: bash
-
-timeout: 360
-
 jobs:
   # Build job
   build:

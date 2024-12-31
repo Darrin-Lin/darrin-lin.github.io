@@ -21,15 +21,8 @@ math: true
 ![](img/IMG_4469.jpeg)\
 ![](img/IMG_4494.jpeg)\
 ![](img/IMG_4507.jpeg)\
-![](img/IMG_4516.jpeg)
-![](img/IMG_4520.jpeg)\
 ![](img/IMG_4534.jpeg)\
-![](img/IMG_4552.jpeg)
-![](img/IMG_4571.jpeg)\
 ![](img/IMG_4586.jpeg)
-![](img/IMG_4603.jpeg)\
-![](img/IMG_4605.jpeg)\
-![](img/IMG_4613.jpeg)
 
 ### Mauna Kea Visitor Information Station(Night)
 ![](img/IMG_4634.jpeg)\

@@ -5,6 +5,7 @@ tags: [Hawaii,Big Island, Oahu]
 categories: [Travel]
 hidden: true
 math: true
+draft: true
 ---
 
 ## 8/12 KOA

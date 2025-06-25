@@ -17,7 +17,7 @@ menu:
 
 ## Experience
 
-- Instructor, TCFSH CIRC (39th Term)
+- Instructor, TCFSH CIRC 39th
 - Student, NTNU CSIE 116
 - PM of R&D Team & Instructor, NTNU CSIE Camp 2024
 - Officer, Information Department, 40th NTNU CSIE Student Association

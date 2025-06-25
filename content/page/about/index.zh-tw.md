@@ -13,3 +13,4 @@ menu:
 - NTNU CSIE 116 student
 - NTNU CSIE Camp 2024 R&D team PM & instructor
 - NTNU CSIE 系學會 40th 資訊長
+- NTNU CSIE 系學會 41st 副資訊長

@@ -180,13 +180,16 @@ global ISP 中間再去透過 IXP（internet exchange point）或是 peering poi
 ### processing delay
 在節點處理封包的時間，包含檢查錯誤、決定路由等
 ### queuing delay
-在 queue 中等待的時間\
-$\frac{L \times a}{R} = \frac{arrival rate of bits}{service rate of bit}$\
-traffic intensisty
+在 queue 中等待的時間
+- a: average arrival rate (packets/sec)
+- L: packet length(bits/packets)
+- R:  link bandwidth (bit transmission rate) (bits/sec)
 
-$ 0$: avg queueing delay small\
-$\rightarrow 1$: avg queueing delay large\
-$> 1$: 幾乎是 infinity delay
+traffic intensity $\rho = \frac{L \times a}{R} = \frac{\text{arrival rate of bits}}{\text{service rate of bits}}$
+
+$\rho \approx 0$: avg queuing delay small\
+$\rho \rightarrow 1$: avg queuing delay large\
+$\rho > 1$: 幾乎是 infinity delay
 ### transmission delay
 把 L bits 的 packet 傳送到 R bps 的 link 上所需要的時間\
 = $\frac{L(bits)}{R(bits/sec)}$ seconds

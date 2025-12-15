@@ -125,7 +125,11 @@ $\frac{w_i}{\sum_j w_j}$
     * 即使 Output Port 不同，兩個封包可能會競爭內部的同一條鏈路 (Internal Link)，導致其中一個被阻擋 。
 
 #### Batcher Network
-會根據輸入的兩個值，將 Low 的值送到上方輸出，High 的值送到下方輸出。
+會根據輸入的兩個值，將 Low 的值送到上方輸出，High 的值送到下方輸出。（沒有輸入視為全為 1）
+* **Architecture**: 由多個 **Comparator (比較器)** 組成的分層結構。
+* **Mechanism**:
+    * 每個 Comparator 接收兩個輸入，將較小的值送到上方輸出，較大的值送到下方輸出。
+    * 透過多層 Comparator，可以將一組輸入值排序 (Sorting)。
 
 #### Batcher-Banyan Network
 這是一個結合了演算法思維的硬體架構，用來解決 Banyan 的碰撞問題。

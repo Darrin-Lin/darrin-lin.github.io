@@ -93,6 +93,53 @@ First-Come-First-Served
 每個 queue 根據權重輪流傳送封包
 $\frac{w_i}{\sum_j w_j}$
 
+
+### Switch Fabric
+
+#### First Generation router: Switching via Memory
+    * **Architecture**: 類似傳統 PC。封包進入 **Input Port** 的 Line Card 後，會發出 **Interrupt** 通知 CPU。
+    * **Mechanism**: CPU 透過 **System Bus** 將封包讀入 **Memory**，查表後再寫入 **Output Port** 的 Line Card 的 Buffer 。
+    * **Bottleneck**: **Memory Bandwidth**。因為封包要經過 System Bus 兩次（Read + Write），吞吐量 (Throughput) 受限於記憶體速度 。
+
+#### Second Generation router: Switching via Bus
+    * **Architecture**: Line Card 加上了 **NFE Processors (Network Forwarding Engine)**（有 CPU 跟 Memory）。
+    * **Mechanism**: Line Card 可以在本地處理 Header 查詢，不需要 CPU 介入每一個封包。封包透過共享的 **System Bus** 直接傳送到 Output Port 。
+    * **Bottleneck**: **Bus Bandwidth**。System Bus 是共享介質 (Shared Medium)，同一時間只能有一個封包在 Bus 上傳輸 (Bus Contention) 。
+
+#### Third Generation: Switching Fabric (Interconnection Networks)
+
+* **Architecture**: 由 $N$ 個 Input 和 $N$ 個 Output 組成的矩陣，中間有 $N^2$ 個 **Crosspoints** (開關) 。
+* **Pros**:
+    * **Non-blocking**: 只要 Output Port 不同，所有封包可以同時傳輸 。
+* **Cons**:
+    * **Scalability Issue**: 硬體複雜度 (Complexity) 是 **$O(N^2)$**。當 $N$ 變大時，成本 (Cost) 和電路面積會爆炸性增長 。
+
+#### Banyan Network
+為了降低 Crossbar 的成本，設計出了 **Multistage Interconnection Network (MIN)**。
+
+* **Architecture**: 多層次的交換網路，通常由 $2 \times 2$ 的 Switching Elements 組成。硬體複雜度降低為 **$O(N \log N)$** 。
+* **Mechanism (Self-Routing)**:
+    * 使用 **Binary Routing Tag**。
+    * 例如 Tag 是 `010`：第一層走上 (0)，第二層走下 (1)，第三層走上 (0) 。
+* **Critical Problem**: **Internal Collision (Blocking)**。
+    * 即使 Output Port 不同，兩個封包可能會競爭內部的同一條鏈路 (Internal Link)，導致其中一個被阻擋 。
+
+#### Batcher Network
+會根據輸入的兩個值，將 Low 的值送到上方輸出，High 的值送到下方輸出。
+
+#### Batcher-Banyan Network
+這是一個結合了演算法思維的硬體架構，用來解決 Banyan 的碰撞問題。
+
+* Collisions can be reduced if packets are ordered on input ports by their output port number
+* **Pipeline Stages**:
+    1.  **Batcher Sorter Network**:
+        * 使用 **Comparators** (比較器) 組成。
+        * 功能是將所有封包依照 **Destination Address** 由小到大排序 (Sorting) 。
+    2.  **Trap Network**:
+        * 檢查排序後的封包，如果有這兩個封包要去同一個 Output Port (Output Contention)，它會標記並過濾掉後面的封包，只讓一個通過 。
+    3.  **Banyan Network**:
+        * 接收已經 Sort 好的封包，執行最終的 **Routing**。此時保證是 **Non-blocking** 的 。
+
 ## network layer
 path selection and forwarding, IP protocol, ICMP protocol
 ### ICMP

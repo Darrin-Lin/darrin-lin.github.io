@@ -279,7 +279,7 @@ in page table |1|4|7|\
 => PFN = 4\
 => physical address = |PFN|offset| = |0100|0001| = 65
 
-### TLB(Table Lookaside buffer)
+### TLB(Translation Lookaside Buffer)
 TLB content 
 | VPN | PFN | other bits | valid bit | ASID(address space)|
 | --- | --- | --- | --- | --- |

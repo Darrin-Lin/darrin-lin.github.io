@@ -1,5 +1,5 @@
 ---
-title: NTNU CPS Real-time system model
+title: NTNU CPS Real-time System Model
 date: 2026-06-07 0:00:00.000000000 +0800 CST
 tags: [CyberPhysicalSystem, NTNUCSIE]
 categories: [CyberPhysicalSystem]

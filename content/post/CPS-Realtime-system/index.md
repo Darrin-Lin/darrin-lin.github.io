@@ -1,7 +1,7 @@
 ---
-title: Real-time system model
+title: NTNU CPS Real-time system model
 date: 2026-06-07 0:00:00.000000000 +0800 CST
-tags: [CyberPhysicalSystem]
+tags: [CyberPhysicalSystem, NTNUCSIE]
 categories: [CyberPhysicalSystem]
 math: true
 ---
@@ -89,7 +89,7 @@ there is n higher priority tasks, has job release at same time as target task $\
 and we can consider them as 1 higher priority task $\tau_0$ (impact same as n tasks)\
 we can know that shift the time of $\tau_0$'s job won't affect response time of $\tau_i$, because it is still inside the response time of $\tau_i$\
 so the worst case is the $\tau_0$ arrival time same as $\tau_i$
-# ^this problem will be in midterm exam(for critical instant) (move the $\tau_0$ arrive before $\tau_i$) #
+
 for different priority order, the execution time of longer:
 ```
 =: executing, ^: arrive -: idle

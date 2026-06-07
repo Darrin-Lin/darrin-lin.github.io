@@ -1,7 +1,7 @@
 ---
-title: Linear System
+title: NTNU CPS Linear System
 date: 2026-06-07 0:00:00.000000000 +0800 CST
-tags: [CyberPhysicalSystem]
+tags: [CyberPhysicalSystem, NTNUCSIE]
 categories: [CyberPhysicalSystem]
 math: true
 ---

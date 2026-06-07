@@ -33,12 +33,13 @@ If producing results after deadline, then it will give lower utility. e.g. live 
 If producing results after deadline, then it will be useless.
 
 ## model
-$\Gamma: \text{task set: }{\tau_1 , \tau_2, \tau_3 ,...}$
-Tasks have many type, some of them are period task, some just one-time task(only one job), also have other
+$\Gamma: \text{task set: }{\tau_1 , \tau_2, \tau_3 ,...}$\
+Tasks have many type, some of them are period task, some just one-time task(only one job), also have other\
+$j_i$: job in task $\tau_i$\
 R: Response time of Real time system is finish time - arrival time\
 $T_i$: time period of job in task\
-C: execution time (in the worst case)\
-U: CPU utilization = sum of CPU use time percentage($[ \sum_{i} \frac{C_i}{T_i}]$)
+$C_i$: execution time (in the worst case)\
+$U$: CPU utilization = sum of CPU use time percentage($[ \sum_{i} \frac{C_i}{T_i}]$)
 ## algorithm
 ### optima
 if one of the algorithm is schedulable, optima algorithm is also schedulable.\

@@ -195,7 +195,7 @@ Ts|==------|==
 T1|--=-------|=
 T2|---=-------|=
 ```
-$\begin{cases} C_{n-1} = T_n -T_{n+1} \\
+$\begin{cases} C_{n-1} = T_n -T_{n+1} \\\\
 C_n = T_s - C_s - \sum_{i=1}^{n-1} C_i\end{cases}$\
 $C_s + \sum_{i=1}^{n-1} C_i = T_n - T_s$\
 $\Rightarrow C_n = T_s - (C_s + \sum_{i=1}^{n-1} C_i) = T_s - (T_n - T_s) = 2T_s - T_n$

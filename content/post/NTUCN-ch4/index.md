@@ -141,6 +141,8 @@ $\frac{w_i}{\sum_j w_j}$
         * 功能是將所有封包依照 **Destination Address** 由小到大排序 (Sorting) 。
     2.  **Trap Network**:
         * 檢查排序後的封包，如果有這兩個封包要去同一個 Output Port (Output Contention)，它會標記並過濾掉後面的封包，只讓一個通過 。
+    3. **Shuffle exchange Network**:
+        * 將封包重新排列 (Rearrange)，以符合 Banyan Network 的輸入格式要求。
     3.  **Banyan Network**:
         * 接收已經 Sort 好的封包，執行最終的 **Routing**。此時保證是 **Non-blocking** 的 。
 

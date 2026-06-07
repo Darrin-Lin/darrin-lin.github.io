@@ -33,7 +33,7 @@ If producing results after deadline, then it will give lower utility. e.g. live 
 If producing results after deadline, then it will be useless.
 
 ## model
-$T: \text{task set: }{\tau_1 , \tau_2, \tau_3 ,...}$
+$\Gamma: \text{task set: }{\tau_1 , \tau_2, \tau_3 ,...}$
 Tasks have many type, some of them are period task, some just one-time task(only one job), also have other
 R: Response time of Real time system is finish time - arrival time\
 $T_i$: time period of job in task\

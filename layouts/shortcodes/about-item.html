@@ -1,0 +1,8 @@
+{{- $date := .Get "date" -}}
+<div class="about-item{{ if not $date }} about-item--no-date{{ end }}">
+    <span class="about-item__marker" aria-hidden="true"></span>
+    {{- with $date }}
+    <span class="about-item__date">{{ . }}</span>
+    {{- end }}
+    <div class="about-item__content">{{ .Inner | markdownify }}</div>
+</div>

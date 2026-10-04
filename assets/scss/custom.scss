@@ -1,0 +1,170 @@
+.article-content:has(.about-item) {
+    container: about-content / inline-size;
+
+    h2 {
+        margin-top: 2.2em;
+        margin-bottom: 0.85em;
+        font-size: 1.45em;
+        letter-spacing: -0.02em;
+    }
+
+    .about-item {
+        display: grid;
+        grid-template-columns: 12rem 1.5rem minmax(0, 1fr);
+        column-gap: 0.85rem;
+        align-items: start;
+        position: relative;
+        padding: 0.42rem 0;
+
+        &__marker {
+            grid-column: 2;
+            grid-row: 1;
+            align-self: stretch;
+            position: relative;
+            min-height: 100%;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -0.45rem;
+                bottom: -0.45rem;
+                left: 50%;
+                width: 2px;
+                transform: translateX(-50%);
+                background: var(--card-separator-color);
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 1rem;
+                left: 50%;
+                width: 0.72rem;
+                height: 0.72rem;
+                transform: translate(-50%, -50%);
+                border: 2px solid var(--card-background);
+                border-radius: 50%;
+                background: var(--accent-color);
+                box-shadow: 0 0 0 2px var(--card-separator-color);
+                z-index: 1;
+            }
+        }
+
+        &__date {
+            grid-column: 1;
+            grid-row: 1;
+            justify-self: end;
+            margin-top: 0.18rem;
+            padding: 0.22rem 0.62rem;
+            border: 1px solid var(--card-separator-color);
+            border-radius: 999px;
+            color: var(--card-text-color-secondary);
+            background: var(--card-background-selected);
+            font-size: 0.78em;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            line-height: 1.45;
+            white-space: nowrap;
+        }
+
+        &__content {
+            grid-column: 3;
+            grid-row: 1;
+            min-width: 0;
+            padding: 0.62rem 0.85rem;
+            border: 1px solid var(--card-separator-color);
+            border-radius: 0.75rem;
+            background: color-mix(in srgb, var(--card-background-selected) 42%, transparent);
+            box-shadow: var(--shadow-l1);
+            transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        &:hover .about-item__content {
+            border-color: color-mix(in srgb, var(--accent-color) 35%, var(--card-separator-color));
+            box-shadow: var(--shadow-l2);
+            transform: translateY(-1px);
+        }
+
+        &--no-date .about-item__content {
+            grid-column: 3;
+        }
+    }
+
+    h2 + .about-item .about-item__marker::before {
+        top: 1rem;
+    }
+
+    .about-item:has(+ h2) .about-item__marker::before,
+    .about-item:last-child .about-item__marker::before {
+        bottom: calc(100% - 1rem);
+    }
+}
+
+@container about-content (max-width: 52rem) {
+    .about-item {
+        grid-template-columns: 1.5rem minmax(0, 1fr) !important;
+        column-gap: 0.75rem !important;
+        row-gap: 0.28rem;
+        padding: 0.55rem 0 !important;
+
+        &__marker {
+            grid-column: 1 !important;
+            grid-row: 1 / span 2 !important;
+        }
+
+        &__date {
+            grid-column: 2 !important;
+            grid-row: 1 !important;
+            justify-self: start !important;
+            margin-top: 0 !important;
+        }
+
+        &__content {
+            grid-column: 2 !important;
+            grid-row: 2 !important;
+        }
+
+        &--no-date .about-item__content {
+            grid-column: 2 !important;
+            grid-row: 1 / span 2 !important;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .article-content:has(.about-item) {
+        .about-item {
+            grid-template-columns: 1.25rem minmax(0, 1fr);
+            column-gap: 0.6rem;
+
+            &__marker {
+                grid-column: 1;
+                grid-row: 1 / span 2;
+            }
+
+            &__date {
+                grid-column: 2;
+                grid-row: 1;
+                justify-self: start;
+                white-space: normal;
+            }
+
+            &__content,
+            &--no-date .about-item__content {
+                grid-column: 2;
+            }
+
+            &__content {
+                grid-row: 2;
+            }
+
+            &--no-date .about-item__content {
+                grid-row: 1 / span 2;
+            }
+        }
+    }
+}

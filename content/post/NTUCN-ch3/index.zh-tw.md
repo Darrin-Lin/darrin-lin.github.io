@@ -55,15 +55,10 @@ sender 端就是等上層資料，然後再去打包成 packet，並用 `udt_sen
 receiver 端就是等 `rdt_rcv()` 收到 packet，然後把資料送到上層
 ```mermaid
 graph TD
-    S((sender-Wait for call from above))
-    R((receiver-Wait for call from below))
-    S-- rdt_send(data)
-    packet = make_pkt(data)
-udt_send(packet)
--->S
-    R-- packet = rdt_rcv()
-data = extract(data)
-deliver_data(data)-->R
+    S((sender: wait for call from above))
+    R((receiver: wait for call from below))
+    S -->|"rdt_send(data)<br/>packet = make_pkt(data)<br/>udt_send(packet)"| S
+    R -->|"packet = rdt_rcv()<br/>data = extract(data)<br/>deliver_data(data)"| R
 ```
 ### rdt 2.0
 有 ACK/NACK 機制去處理 bit error\
@@ -78,14 +73,11 @@ sender 會等 ACK/NACK 回傳\
 收到 NACK 就重傳剛剛的 packet
 ```mermaid
 graph TD
-    S((sender-Wait for call from above))
-    W((Wait for ACK/NACK))
-    S-- rdt_send(data)
-    packet = make_pkt(data)
-udt_send(packet)-->W
-    W-- rdt_rcv(rcvpkt) && isNAK(rcvpkt)
-udt_send(packet)-->W
-    W-- rdt_rcv(rcvpkt) && isACK(rcvpkt) -->S
+    S((sender: wait for call from above))
+    W((wait for ACK/NACK))
+    S -->|"rdt_send(data)<br/>packet = make_pkt(data)<br/>udt_send(packet)"| W
+    W -->|"rdt_rcv(rcvpkt) && isNAK(rcvpkt)<br/>udt_send(packet)"| W
+    W -->|"rdt_rcv(rcvpkt) && isACK(rcvpkt)"| S
 ```
 #### receiver side
 receiver 收到 packet 後會檢查有沒有錯誤\

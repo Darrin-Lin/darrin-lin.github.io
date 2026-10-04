@@ -168,3 +168,53 @@
         }
     }
 }
+
+.article-content .mermaid-scroll {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 1.5em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--card-separator-color);
+    border-radius: var(--card-border-radius);
+    background: color-mix(in srgb, var(--card-background-selected) 42%, transparent);
+    box-shadow: var(--shadow-l1);
+    scrollbar-width: thin;
+    box-sizing: border-box;
+
+    &:focus-visible {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 3px;
+    }
+
+    pre.mermaid {
+        display: flex;
+        justify-content: center;
+        width: max-content;
+        min-width: 100%;
+        max-width: none;
+        margin: 0 !important;
+        padding: 1rem;
+        overflow: visible;
+        border: 0;
+        border-radius: 0;
+        color: var(--card-text-color-main);
+        background: transparent;
+        box-shadow: none;
+        font-family: var(--base-font-family);
+        line-height: normal;
+        word-break: normal;
+        box-sizing: border-box;
+    }
+
+    svg {
+        display: block;
+        max-width: none !important;
+        height: auto;
+        flex: 0 0 auto;
+    }
+}

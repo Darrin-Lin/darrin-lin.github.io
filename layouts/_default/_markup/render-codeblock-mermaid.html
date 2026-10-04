@@ -1,0 +1,6 @@
+<div class="mermaid-scroll" tabindex="0" role="region" aria-label="Scrollable diagram">
+    <pre class="mermaid">
+        {{- .Inner | htmlEscape | safeHTML }}
+    </pre>
+</div>
+{{- .Page.Store.Set "hasMermaid" true -}}

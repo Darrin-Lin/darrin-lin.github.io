@@ -1,0 +1,53 @@
+{{- if .Store.Get "hasMermaid" -}}
+<script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+    const diagrams = Array.from(document.querySelectorAll("pre.mermaid"));
+
+    diagrams.forEach((diagram) => {
+        diagram.dataset.mermaidSource = diagram.textContent.trim();
+    });
+
+    const renderMermaid = async () => {
+        const isDark = document.documentElement.dataset.scheme === "dark";
+
+        mermaid.initialize({
+            startOnLoad: false,
+            securityLevel: "strict",
+            theme: isDark ? "dark" : "default",
+            flowchart: {
+                useMaxWidth: false,
+            },
+            fontFamily: getComputedStyle(document.documentElement)
+                .getPropertyValue("--base-font-family")
+                .trim(),
+        });
+
+        diagrams.forEach((diagram) => {
+            diagram.removeAttribute("data-processed");
+            diagram.textContent = diagram.dataset.mermaidSource;
+        });
+
+        await mermaid.run({ nodes: diagrams });
+    };
+
+    await renderMermaid();
+
+    let rendering = false;
+    new MutationObserver(async (mutations) => {
+        if (rendering || !mutations.some((mutation) => mutation.attributeName === "data-scheme")) {
+            return;
+        }
+
+        rendering = true;
+        try {
+            await renderMermaid();
+        } finally {
+            rendering = false;
+        }
+    }).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-scheme"],
+    });
+</script>
+{{- end -}}
